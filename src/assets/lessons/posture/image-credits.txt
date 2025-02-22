@@ -1,0 +1,21 @@
+Guitar Posture Images Credits
+
+1. sitting-position.jpg
+Source: Wikimedia Commons
+Original: "Guitare position standard.jpg"
+License: Creative Commons Attribution
+URL: https://commons.wikimedia.org/wiki/File:Guitare_position_standard.jpg
+
+2. guitar-position.jpg
+Source: Wikimedia Commons
+Original: "Position des mains pendant le jeu.jpeg"
+License: Creative Commons Attribution
+URL: https://commons.wikimedia.org/wiki/File:Position_des_mains_pendant_le_jeu.jpeg
+
+3. hand-position.jpg
+Source: Wikimedia Commons
+Original: "Pollice manico chitarra thumb guitar neck.jpg"
+License: Creative Commons Attribution
+URL: https://commons.wikimedia.org/wiki/File:Pollice_manico_chitarra_thumb_guitar_neck.jpg
+
+Note: All images used in this application are under Creative Commons licenses and require attribution.
