@@ -97,41 +97,58 @@ const BasicsPage: React.FC = () => {
         <div className="mb-8 w-full h-4 bg-white rounded-full shadow-inner">
           <div 
             className="h-full bg-purple-500 rounded-full transition-all duration-300"
-            style={{ width: `${(currentSection / lessons.length) * 100}%` }}
+            style={{ width: `${(completedLessons.length / lessons.length) * 100}%` }}
           />
         </div>
 
         {/* Lesson sections */}
         <div className="space-y-4">
           {lessons.map((lesson, index) => (
-            <button
+            <div
               key={lesson.id}
               onClick={() => handleStartLesson(index)}
               className={`w-full text-left p-6 rounded-xl transition-all duration-200
-                ${index <= currentSection 
-                  ? 'bg-white shadow-lg hover:shadow-xl active:shadow-md active:scale-[0.995]' 
-                  : 'bg-gray-100 opacity-70 cursor-not-allowed'}
+                bg-white shadow-lg hover:shadow-xl cursor-pointer
                 ${index === currentSection && 'ring-2 ring-purple-400'}`}
             >
-              <div className="flex gap-4 items-center">
-                <div className={`
-                  w-8 h-8 rounded-full flex items-center justify-center text-sm
-                  ${completedLessons.includes(index) ? 'bg-green-100 text-green-700' : 
-                    index === currentSection ? 'bg-purple-100 text-purple-700' :
-                    'bg-gray-200 text-gray-500'}
-                `}>
-                  {completedLessons.includes(index) ? '✓' : index + 1}
+              <div className="flex gap-4 items-center justify-between">
+                <div className="flex gap-4 items-center">
+                  <div className={`
+                    w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold
+                    ${completedLessons.includes(index) 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-gray-100 text-gray-400 border-2 border-gray-200'}
+                  `}>
+                    {completedLessons.includes(index) ? '✓' : index + 1}
+                  </div>
+                  <div>
+                    <h3 className="mb-1 text-xl font-semibold text-purple-900">
+                      {lesson.title}
+                    </h3>
+                    <p className="text-purple-600">
+                      {lesson.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="mb-1 text-xl font-semibold text-purple-900">
-                    {lesson.title}
-                  </h3>
-                  <p className="text-purple-600">
-                    {lesson.description}
-                  </p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (!completedLessons.includes(index)) {
+                        setCompletedLessons([...completedLessons, index]);
+                        if (index === currentSection && currentSection < lessons.length - 1) {
+                          setCurrentSection(currentSection + 1);
+                        }
+                      }
+                    }}
+                    className="p-2 text-sm bg-green-500 text-white rounded-lg hover:bg-green-600 
+                             transition-colors duration-200"
+                  >
+                    Skip ✓
+                  </button>
                 </div>
               </div>
-            </button>
+            </div>
           ))}
         </div>
 

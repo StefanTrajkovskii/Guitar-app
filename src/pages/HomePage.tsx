@@ -32,14 +32,15 @@ const HomePage: React.FC = () => {
             </button>
 
             <button 
+              onClick={() => navigate('/chords')}
               className="bg-white p-6 rounded-xl shadow-lg active:shadow-md 
                          transition-all duration-200 active:scale-98 
                          hover:bg-purple-50 focus:outline-none focus:ring-2 
                          focus:ring-purple-300 min-h-[120px]
                          flex flex-col items-center justify-center"
             >
-              <h2 className="text-xl font-semibold text-purple-700 mb-2">First Chords</h2>
-              <p className="text-gray-600 text-sm md:text-base">Start making music with easy chords</p>
+              <h2 className="text-xl font-semibold text-purple-700 mb-2">All Chords</h2>
+              <p className="text-gray-600 text-sm md:text-base">Master guitar chords with interactive lessons</p>
             </button>
 
             <button 
