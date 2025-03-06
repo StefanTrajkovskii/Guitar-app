@@ -153,7 +153,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 7-9-9-8-7-7',
         description: 'Barre E major chord. Place your first finger across all strings at the 7th fret, then use your remaining fingers in the A shape.',
-        videoUrl: 'https://www.youtube.com/watch?v=SnbIbTG4ivU'
+        videoUrl: 'https://www.youtube.com/watch?v=JSy6PSYdKAA'
       }
     ]
   },
@@ -174,7 +174,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-7-6-5-5',
         description: 'Barre F major chord using the E shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=wbFlPJqEgLI'
+        videoUrl: 'https://www.youtube.com/watch?v=gxiSk0tnzlE'
       },
       {
         position: 'Alternative Open',
@@ -202,7 +202,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre G major chord using the B7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=dlDXIVxYxBw'
+        videoUrl: 'https://www.youtube.com/watch?v=GPmMCV2ncxw'
       },
       {
         position: 'Alternative Open',
@@ -232,7 +232,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 8-10-10-9-8-8',
         description: 'Barre A minor chord using the A shape at the 8th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=3q8vFUe9vEc'
+        videoUrl: 'https://www.youtube.com/watch?v=0yHO-8Qdi1Q'
       },
       {
         position: 'Alternative Open',
@@ -253,7 +253,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 X-2-4-4-3-2',
         description: 'The standard B minor barre chord. Place your first finger across all strings at the second fret, and use your remaining fingers for the other notes.',
-        videoUrl: 'https://www.youtube.com/watch?v=aX5nHnwgKvM'
+        videoUrl: 'https://www.youtube.com/watch?v=gGamnzOtuzE'
       },
       {
         position: 'Alternative (7th fret)',
@@ -267,14 +267,14 @@ export const chordData: ChordType[] = [
   {
     name: 'Cm (C Minor)',
     category: 'Minor Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=9DSyuuZZiPc',
+    audioUrl: 'https://www.youtube.com/watch?v=g98I8NgiBhc',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-5-5-4-3',
         description: 'The basic open C minor chord. Barre your first finger across all strings at the third fret, and use your remaining fingers for the other notes.',
-        videoUrl: 'https://www.youtube.com/watch?v=9DSyuuZZiPc'
+        videoUrl: 'https://www.youtube.com/watch?v=g98I8NgiBhc'
       },
       {
         position: 'Barre (8th fret)',
@@ -288,7 +288,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-5-5-5-3',
         description: 'Alternative voicing of C minor using a partial barre chord shape.',
-        videoUrl: 'https://www.youtube.com/watch?v=9DSyuuZZiPc'
+        videoUrl: 'https://www.youtube.com/watch?v=g98I8NgiBhc'
       }
     ]
   },
@@ -309,7 +309,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 X-5-7-5-7-5',
         description: 'Barre D minor chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=Vq6dw9zG5PY'
+        videoUrl: 'https://www.youtube.com/watch?v=0C8QOA5HQsI'
       },
       {
         position: 'Alternative Open',
@@ -337,7 +337,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 7-9-7-8-7-7',
         description: 'Barre E minor chord using the Am7 shape at the 7th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=EpPCfJzRiYU'
+        videoUrl: 'https://www.youtube.com/watch?v=3lQy8w5VQOk'
       },
       {
         position: 'Alternative',
@@ -367,7 +367,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-6-5-5',
         description: 'Barre A7 chord. Place your first finger across all strings at the 5th fret, then add the seventh note pattern.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=hBb__v7-yZQ'
       },
       {
         position: 'Alternative Open',
@@ -395,7 +395,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre B7 chord using the G7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=EztXCHUWh9M'
+        videoUrl: 'https://www.youtube.com/watch?v=4fVoONF4Hrk'
       },
       {
         position: 'Alternative Open',
@@ -423,7 +423,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre C7 chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=2dFmwxLy4kA'
       },
       {
         position: 'Alternative Open',
@@ -451,7 +451,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 X-5-7-5-7-5',
         description: 'Barre D7 chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=jWrjhallOWQ'
+        videoUrl: 'https://www.youtube.com/watch?v=TS9TqzxB3VA'
       },
       {
         position: 'Alternative Open',
@@ -479,7 +479,7 @@ export const chordData: ChordType[] = [
         difficulty: 'Intermediate',
         diagram: '🎸 7-9-7-8-7-7',
         description: 'Barre E7 chord using the Am7 shape at the 7th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=BCmrttxBykw'
+        videoUrl: 'https://www.youtube.com/watch?v=-s8IH0eQ7q8'
       },
       {
         position: 'Alternative',
@@ -495,49 +495,49 @@ export const chordData: ChordType[] = [
   {
     name: 'Am7',
     category: 'Minor Seventh Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=KcHZ5_XJ_vE',
+    audioUrl: 'https://www.youtube.com/watch?v=yFDyVN3YZsU',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-0-1-0',
         description: 'The basic Am7 chord. A beautiful and commonly used minor seventh chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=KcHZ5_XJ_vE'
+        videoUrl: 'https://www.youtube.com/watch?v=yFDyVN3YZsU'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-5-5-5',
         description: 'Barre Am7 chord using the Em7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=KcHZ5_XJ_vE'
+        videoUrl: 'https://www.youtube.com/watch?v=M4EGUsN_rg0'
       }
     ]
   },
   {
     name: 'Em7',
     category: 'Minor Seventh Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=jJLmPN_ao_Q',
+    audioUrl: 'https://www.youtube.com/watch?v=6fWLmEkEIbw',
     variations: [
       {
         position: 'Open',
         difficulty: 'Beginner',
         diagram: '🎸 0-2-0-0-0-0',
         description: 'The basic open Em7 chord. Only requires one finger on the second fret of the A string.',
-        videoUrl: 'https://www.youtube.com/watch?v=jJLmPN_ao_Q'
+        videoUrl: 'https://www.youtube.com/watch?v=6fWLmEkEIbw'
       },
       {
         position: 'Barre (7th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 7-9-7-8-7-7',
         description: 'Barre Em7 chord using the Am7 shape at the 7th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=jJLmPN_ao_Q'
+        videoUrl: 'https://www.youtube.com/watch?v=2tYUO6KHjhs'
       },
       {
         position: 'Alternative',
         difficulty: 'Intermediate',
         diagram: '🎸 0-2-2-0-3-0',
         description: 'Alternative voicing of Em7 that includes a higher seventh note.',
-        videoUrl: 'https://www.youtube.com/watch?v=jJLmPN_ao_Q'
+        videoUrl: 'https://www.youtube.com/watch?v=6fWLmEkEIbw'
       }
     ]
   },
@@ -546,56 +546,56 @@ export const chordData: ChordType[] = [
   {
     name: 'Amaj7',
     category: 'Major Seventh Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s',
+    audioUrl: 'https://www.youtube.com/watch?v=FxtSEHfvhS0',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-1-2-0',
         description: 'The basic open Amaj7 chord. Place your first, second, and third fingers on the second fret of the D, G, and B strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=FxtSEHfvhS0'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-6-5-5',
         description: 'Barre Amaj7 chord. Place your first finger across all strings at the 5th fret, then add the seventh note pattern.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=FxtSEHfvhS0'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-2-2-3',
         description: 'Alternative voicing of Amaj7 that includes the seventh in the highest note.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=FxtSEHfvhS0'
       }
     ]
   },
   {
     name: 'Cmaj7',
     category: 'Major Seventh Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA',
+    audioUrl: 'https://www.youtube.com/watch?v=n5XCCHsq22c',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-2-0-0-0',
         description: 'The basic open Cmaj7 chord. Place your first, second, and third fingers on the second fret of the D, G, and B strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=n5XCCHsq22c'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre Cmaj7 chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=n5XCCHsq22c'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-2-3-1-0',
         description: 'Alternative voicing of Cmaj7 that includes a higher seventh note.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=n5XCCHsq22c'
       }
     ]
   },
@@ -604,49 +604,49 @@ export const chordData: ChordType[] = [
   {
     name: 'Asus2',
     category: 'Suspended Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY',
+    audioUrl: 'https://www.youtube.com/watch?v=eMpg6FVYQqM',
     variations: [
       {
         position: 'Open',
         difficulty: 'Beginner',
         diagram: '🎸 X-0-2-2-0-0',
         description: 'The basic Asus2 chord. Replaces the third with a second note for a more open sound.',
-        videoUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY'
+        videoUrl: 'https://www.youtube.com/watch?v=eMpg6FVYQqM'
       },
       {
         position: 'Alternative',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-4-0-0',
         description: 'Alternative voicing of Asus2 with a higher second.',
-        videoUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY'
+        videoUrl: 'https://www.youtube.com/watch?v=eMpg6FVYQqM'
       }
     ]
   },
   {
     name: 'Asus4',
     category: 'Suspended Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY',
+    audioUrl: 'https://www.youtube.com/watch?v=6exqmYzRIbw',
     variations: [
       {
         position: 'Open',
         difficulty: 'Beginner',
         diagram: '🎸 X-0-2-2-3-0',
         description: 'The basic Asus4 chord. Place your first, second, and third fingers on the second fret of the D, G, and B strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY'
+        videoUrl: 'https://www.youtube.com/watch?v=6exqmYzRIbw'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-7-6-5-5',
         description: 'Barre Asus4 chord using the E shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY'
+        videoUrl: 'https://www.youtube.com/watch?v=6exqmYzRIbw'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-5-5-5-3',
         description: 'Alternative voicing of Asus4 using a partial barre chord shape.',
-        videoUrl: 'https://www.youtube.com/watch?v=6HxZsLFk-nY'
+        videoUrl: 'https://www.youtube.com/watch?v=6exqmYzRIbw'
       }
     ]
   },
@@ -655,28 +655,28 @@ export const chordData: ChordType[] = [
   {
     name: 'Adim',
     category: 'Diminished Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s',
+    audioUrl: 'https://www.youtube.com/watch?v=hci5vEW9XRA',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-1-2-1-X',
         description: 'The basic open A diminished chord. Place your first, second, and third fingers on the first fret of the B, D, and G strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=hci5vEW9XRA'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre A diminished chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=hci5vEW9XRA'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-1-2-1-X',
         description: 'Alternative voicing of A diminished chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=hci5vEW9XRA'
       }
     ]
   },
@@ -685,28 +685,28 @@ export const chordData: ChordType[] = [
   {
     name: 'Aaug',
     category: 'Augmented Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s',
+    audioUrl: 'https://www.youtube.com/watch?v=UDE5WAk6Hd0',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-3-2-2-1',
         description: 'The basic open A augmented chord. Place your first, second, and third fingers on the first fret of the B, D, and G strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=UDE5WAk6Hd0'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-7-6-5-5',
         description: 'Barre A augmented chord using the E shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=UDE5WAk6Hd0'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-3-2-2-1',
         description: 'Alternative voicing of A augmented chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=UDE5WAk6Hd0'
       }
     ]
   },
@@ -715,49 +715,49 @@ export const chordData: ChordType[] = [
   {
     name: 'A5',
     category: 'Power Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=qQXD77NW9f0',
+    audioUrl: 'https://www.youtube.com/watch?v=PlAGHpi4gkU',
     variations: [
       {
         position: 'Basic',
         difficulty: 'Beginner',
         diagram: '🎸 X-0-2-2-X-X',
         description: 'The basic A5 power chord. Perfect for rock and metal music.',
-        videoUrl: 'https://www.youtube.com/watch?v=qQXD77NW9f0'
+        videoUrl: 'https://www.youtube.com/watch?v=PlAGHpi4gkU'
       },
       {
         position: 'Alternative',
         difficulty: 'Beginner',
         diagram: '🎸 5-7-7-X-X-X',
         description: 'Alternative A5 power chord position using the E5 shape.',
-        videoUrl: 'https://www.youtube.com/watch?v=qQXD77NW9f0'
+        videoUrl: 'https://www.youtube.com/watch?v=PlAGHpi4gkU'
       }
     ]
   },
   {
     name: 'E5',
     category: 'Power Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=EpPCfJzRiYU',
+    audioUrl: 'https://www.youtube.com/watch?v=luC9ISMhY6k',
     variations: [
       {
         position: 'Open',
         difficulty: 'Beginner',
         diagram: '🎸 0-2-2-X-X-X',
         description: 'The basic open E5 power chord. Place your first, second, and third fingers on the second fret of the A, D, and G strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=EpPCfJzRiYU'
+        videoUrl: 'https://www.youtube.com/watch?v=luC9ISMhY6k'
       },
       {
         position: 'Barre (7th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 7-9-7-8-7-7',
         description: 'Barre E5 power chord using the E7 shape at the 7th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=EpPCfJzRiYU'
+        videoUrl: 'https://www.youtube.com/watch?v=luC9ISMhY6k'
       },
       {
         position: 'Alternative',
         difficulty: 'Intermediate',
         diagram: '🎸 0-2-2-X-X-X',
         description: 'Alternative voicing of E5 power chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=EpPCfJzRiYU'
+        videoUrl: 'https://www.youtube.com/watch?v=luC9ISMhY6k'
       }
     ]
   },
@@ -766,56 +766,56 @@ export const chordData: ChordType[] = [
   {
     name: 'A9',
     category: 'Extended Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s',
+    audioUrl: 'https://www.youtube.com/watch?v=sZeFgLi2oDM',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-4-2-3',
         description: 'The basic open A9 chord. Place your first, second, and third fingers on the second fret of the D, G, and B strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=sZeFgLi2oDM'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-6-5-5',
         description: 'Barre A9 chord using the A7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=sZeFgLi2oDM'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-0-2-4-2-3',
         description: 'Alternative voicing of A9 chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=rNSwPkKZN_s'
+        videoUrl: 'https://www.youtube.com/watch?v=sZeFgLi2oDM'
       }
     ]
   },
   {
     name: 'C13',
     category: 'Extended Chords',
-    audioUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA',
+    audioUrl: 'https://www.youtube.com/watch?v=EyYniMu3SSc',
     variations: [
       {
         position: 'Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-2-3-3-5',
         description: 'The basic open C13 chord. Place your first, second, and third fingers on the second fret of the D, G, and B strings.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=EyYniMu3SSc'
       },
       {
         position: 'Barre (5th fret)',
         difficulty: 'Intermediate',
         diagram: '🎸 5-7-5-7-5-5',
         description: 'Barre C13 chord using the Cmaj7 shape at the 5th fret.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=EyYniMu3SSc'
       },
       {
         position: 'Alternative Open',
         difficulty: 'Intermediate',
         diagram: '🎸 X-3-2-3-3-5',
         description: 'Alternative voicing of C13 chord.',
-        videoUrl: 'https://www.youtube.com/watch?v=O4xaIi36DLA'
+        videoUrl: 'https://www.youtube.com/watch?v=EyYniMu3SSc'
       }
     ]
   }
