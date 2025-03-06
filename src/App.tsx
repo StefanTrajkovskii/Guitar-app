@@ -4,18 +4,23 @@ import HomePage from './pages/HomePage';
 import BasicsPage from './pages/basics/BasicsPage';
 import AllChordsPage from './pages/chords/AllChordsPage';
 import PracticePage from './pages/practice/PracticePage';
+import { PracticeTimerProvider, FloatingTimer, PracticeModal } from './contexts/PracticeTimerContext';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/basics" element={<BasicsPage />} />
-        <Route path="/chords" element={<AllChordsPage />} />
-        <Route path="/practice" element={<PracticePage />} />
-      </Routes>
+      <PracticeTimerProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/basics" element={<BasicsPage />} />
+          <Route path="/chords" element={<AllChordsPage />} />
+          <Route path="/practice" element={<PracticePage />} />
+        </Routes>
+        <FloatingTimer />
+        <PracticeModal />
+      </PracticeTimerProvider>
     </Router>
   );
-}
+};
 
 export default App;

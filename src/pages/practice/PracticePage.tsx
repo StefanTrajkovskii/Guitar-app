@@ -15,6 +15,7 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import UnlockedContent from './UnlockedContent';
 import WarningIcon from '@mui/icons-material/Warning';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { usePracticeTimer } from '../../contexts/PracticeTimerContext';
 
 interface PracticeRoutine {
   duration: number;
@@ -262,13 +263,22 @@ const PracticePage: React.FC = () => {
   const [showLevelUp, setShowLevelUp] = useState(false);
   const currentLevel = calculateLevel(totalXP);
   const nextLevelXP = getNextLevelXP(totalXP);
-  const [selectedRoutine, setSelectedRoutine] = useState<PracticeRoutine | null>(null);
-  const [timeLeft, setTimeLeft] = useState<number>(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const [currentExercise, setCurrentExercise] = useState(0);
   const [showRewards, setShowRewards] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
-  const [showPracticeModal, setShowPracticeModal] = useState(false);
+
+  const {
+    selectedRoutine,
+    timeLeft,
+    isRunning,
+    currentExercise,
+    showPracticeModal,
+    startPractice,
+    endPractice,
+    toggleTimer,
+    nextExercise,
+    previousExercise,
+    setShowPracticeModal
+  } = usePracticeTimer();
 
   const getRandomChallenges = () => {
     const today = new Date().toDateString();
@@ -389,28 +399,9 @@ const PracticePage: React.FC = () => {
     }
   ]);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isRunning && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((time) => time - 1);
-      }, 1000);
-    } else if (timeLeft === 0 && isRunning) {
-      setIsRunning(false);
-      if (selectedRoutine) {
-        const newRoutines = routines.map(routine =>
-          routine.title === selectedRoutine.title ? { ...routine, completed: true } : routine
-        );
-        setRoutines(newRoutines);
-      }
-    }
-    return () => clearInterval(interval);
-  }, [isRunning, timeLeft, selectedRoutine, routines]);
-
   const handleBack = () => {
     window.history.back();
   };
-
 
   const toggleChallengeComplete = (id: number) => {
     const challenge = dailyChallenges.find(c => c.id === id);
@@ -442,35 +433,14 @@ const PracticePage: React.FC = () => {
     }
   };
 
-  const startPractice = (routine: PracticeRoutine) => {
-    setSelectedRoutine(routine);
-    setTimeLeft(routine.duration * 60);
-    setCurrentExercise(0);
-    setShowPracticeModal(true);
-  };
-
-  const endPractice = () => {
-    setIsRunning(false);
-    setSelectedRoutine(null);
-    setShowPracticeModal(false);
+  const handleStartPractice = (routine: PracticeRoutine) => {
+    startPractice(routine);
   };
 
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const handleNext = () => {
-    if (selectedRoutine && currentExercise < selectedRoutine.exercises.length - 1) {
-      setCurrentExercise(curr => curr + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentExercise > 0) {
-      setCurrentExercise(curr => curr - 1);
-    }
   };
 
   const handleResetLevel = () => {
@@ -694,7 +664,7 @@ const PracticePage: React.FC = () => {
                     key={routine.title}
                     className={`bg-white rounded-xl shadow-lg p-6 cursor-pointer transition-all
                       ${routine.completed ? 'border-2 border-green-500' : 'hover:shadow-xl'}`}
-                    onClick={() => startPractice(routine)}
+                    onClick={() => handleStartPractice(routine)}
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center">
@@ -751,131 +721,6 @@ const PracticePage: React.FC = () => {
         ) : (
           <div className="bg-white rounded-b-xl shadow-lg p-6">
             <UnlockedContent currentLevel={currentLevel} />
-          </div>
-        )}
-
-        {/* Floating Timer */}
-        {selectedRoutine && !showPracticeModal && (
-          <div className="fixed bottom-6 right-6 bg-white rounded-xl shadow-lg p-4 z-40 w-64 transform transition-all hover:scale-105">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-semibold text-purple-900">{selectedRoutine.title}</h3>
-              <IconButton
-                size="small"
-                onClick={() => setShowPracticeModal(true)}
-                className="text-gray-500 hover:text-purple-600"
-              >
-                <TimerIcon />
-              </IconButton>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">
-                {formatTime(timeLeft)}
-              </div>
-              <div className="flex justify-center gap-2">
-                <Button
-                  variant="contained"
-                  size="small"
-                  color={isRunning ? "error" : "primary"}
-                  onClick={() => setIsRunning(!isRunning)}
-                  startIcon={isRunning ? <PauseIcon /> : <PlayArrowIcon />}
-                  className="text-sm"
-                >
-                  {isRunning ? 'Pause' : 'Start'}
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  color="error"
-                  onClick={endPractice}
-                  startIcon={<StopIcon />}
-                  className="text-sm"
-                >
-                  End
-                </Button>
-              </div>
-              <div className="mt-2 text-sm text-gray-600">
-                Exercise {currentExercise + 1} of {selectedRoutine.exercises.length}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Practice Session Modal */}
-        {selectedRoutine && showPracticeModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-xl p-6 max-w-2xl w-full" onClick={e => e.stopPropagation()}>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-purple-800">{selectedRoutine.title}</h2>
-                <IconButton
-                  onClick={() => setShowPracticeModal(false)}
-                  className="text-gray-500 hover:text-purple-600"
-                >
-                  <ArrowBackIcon />
-                </IconButton>
-              </div>
-              
-              {/* Timer */}
-              <div className="text-center mb-6">
-                <div className="text-4xl font-bold text-purple-600 mb-4">
-                  {formatTime(timeLeft)}
-                </div>
-                <div className="flex justify-center gap-4">
-                  <Button
-                    variant="contained"
-                    color={isRunning ? "error" : "primary"}
-                    onClick={() => setIsRunning(!isRunning)}
-                    startIcon={isRunning ? <PauseIcon /> : <PlayArrowIcon />}
-                  >
-                    {isRunning ? 'Pause' : 'Start'}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    onClick={endPractice}
-                    startIcon={<StopIcon />}
-                  >
-                    End Session
-                  </Button>
-                </div>
-              </div>
-
-              {/* Current Exercise */}
-              <div className="bg-purple-50 rounded-lg p-6 mb-6">
-                <h3 className="text-xl font-semibold text-purple-800 mb-2">
-                  Exercise {currentExercise + 1} of {selectedRoutine.exercises.length}
-                </h3>
-                <p className="text-lg text-purple-700 mb-4">
-                  {selectedRoutine.exercises[currentExercise]}
-                </p>
-                <div className="flex justify-between">
-                  <Button
-                    disabled={currentExercise === 0}
-                    onClick={handlePrevious}
-                    variant="outlined"
-                  >
-                    Previous
-                  </Button>
-                  <Button
-                    disabled={currentExercise === selectedRoutine.exercises.length - 1}
-                    onClick={handleNext}
-                    variant="contained"
-                  >
-                    Next Exercise
-                  </Button>
-                </div>
-              </div>
-
-              {/* Tips */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-700 mb-2">Tips:</h4>
-                <ul className="list-disc list-inside text-gray-600">
-                  <li>Take breaks if your fingers feel strained</li>
-                  <li>Focus on accuracy before speed</li>
-                  <li>Use a metronome for timing exercises</li>
-                  <li>Stay relaxed and maintain good posture</li>
-                </ul>
-              </div>
-            </div>
           </div>
         )}
       </div>
