@@ -49,6 +49,7 @@ const HomePage: React.FC = () => {
                          hover:bg-purple-50 focus:outline-none focus:ring-2 
                          focus:ring-purple-300 min-h-[120px]
                          flex flex-col items-center justify-center"
+              onClick={() => navigate('/practice')}
             >
               <h2 className="text-xl font-semibold text-purple-700 mb-2">Practice</h2>
               <p className="text-gray-600 text-sm md:text-base">Track your progress and achievements</p>
