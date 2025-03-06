@@ -268,6 +268,7 @@ const PracticePage: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState(0);
   const [showRewards, setShowRewards] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [showPracticeModal, setShowPracticeModal] = useState(false);
 
   const getRandomChallenges = () => {
     const today = new Date().toDateString();
@@ -445,6 +446,13 @@ const PracticePage: React.FC = () => {
     setSelectedRoutine(routine);
     setTimeLeft(routine.duration * 60);
     setCurrentExercise(0);
+    setShowPracticeModal(true);
+  };
+
+  const endPractice = () => {
+    setIsRunning(false);
+    setSelectedRoutine(null);
+    setShowPracticeModal(false);
   };
 
   const formatTime = (seconds: number): string => {
@@ -746,11 +754,65 @@ const PracticePage: React.FC = () => {
           </div>
         )}
 
+        {/* Floating Timer */}
+        {selectedRoutine && !showPracticeModal && (
+          <div className="fixed bottom-6 right-6 bg-white rounded-xl shadow-lg p-4 z-40 w-64 transform transition-all hover:scale-105">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg font-semibold text-purple-900">{selectedRoutine.title}</h3>
+              <IconButton
+                size="small"
+                onClick={() => setShowPracticeModal(true)}
+                className="text-gray-500 hover:text-purple-600"
+              >
+                <TimerIcon />
+              </IconButton>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">
+                {formatTime(timeLeft)}
+              </div>
+              <div className="flex justify-center gap-2">
+                <Button
+                  variant="contained"
+                  size="small"
+                  color={isRunning ? "error" : "primary"}
+                  onClick={() => setIsRunning(!isRunning)}
+                  startIcon={isRunning ? <PauseIcon /> : <PlayArrowIcon />}
+                  className="text-sm"
+                >
+                  {isRunning ? 'Pause' : 'Start'}
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  color="error"
+                  onClick={endPractice}
+                  startIcon={<StopIcon />}
+                  className="text-sm"
+                >
+                  End
+                </Button>
+              </div>
+              <div className="mt-2 text-sm text-gray-600">
+                Exercise {currentExercise + 1} of {selectedRoutine.exercises.length}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Practice Session Modal */}
-        {selectedRoutine && (
+        {selectedRoutine && showPracticeModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-xl p-6 max-w-2xl w-full" onClick={e => e.stopPropagation()}>
-              <h2 className="text-2xl font-bold text-purple-800 mb-4">{selectedRoutine.title}</h2>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-purple-800">{selectedRoutine.title}</h2>
+                <IconButton
+                  onClick={() => setShowPracticeModal(false)}
+                  className="text-gray-500 hover:text-purple-600"
+                >
+                  <ArrowBackIcon />
+                </IconButton>
+              </div>
               
               {/* Timer */}
               <div className="text-center mb-6">
@@ -769,10 +831,7 @@ const PracticePage: React.FC = () => {
                   <Button
                     variant="outlined"
                     color="error"
-                    onClick={() => {
-                      setIsRunning(false);
-                      setSelectedRoutine(null);
-                    }}
+                    onClick={endPractice}
                     startIcon={<StopIcon />}
                   >
                     End Session
