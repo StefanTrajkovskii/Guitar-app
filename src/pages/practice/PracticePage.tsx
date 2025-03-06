@@ -6,8 +6,6 @@ import TimerIcon from '@mui/icons-material/Timer';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import StopIcon from '@mui/icons-material/Stop';
 import LevelUpIcon from '@mui/icons-material/TrendingUp';
 import StarIcon from '@mui/icons-material/Star';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
