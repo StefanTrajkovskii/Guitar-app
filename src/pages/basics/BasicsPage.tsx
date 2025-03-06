@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GuitarAnatomy from './GuitarAnatomy';
 import PerfectPosture from './PerfectPosture';
 import HandPositions from './HandPositions';
@@ -74,14 +76,16 @@ const BasicsPage: React.FC = () => {
 
   return (
     <div className="py-6 min-h-screen bg-gradient-to-b from-purple-100 to-pink-100">
-      {/* Back button */}
       <div className="container px-4 mx-auto">
-        <button 
-          onClick={() => window.history.back()}
-          className="flex gap-2 items-center mb-6 text-purple-700 hover:text-purple-900"
-        >
-          <span className="text-2xl">←</span> Back
-        </button>
+        <div className="flex items-center mb-8">
+          <IconButton 
+            onClick={() => window.history.back()}
+            className="mr-4 bg-white hover:bg-gray-100"
+            size="large"
+          >
+            <ArrowBackIcon />
+          </IconButton>
+        </div>
 
         {/* Main content */}
         <div className="mb-8 text-center">

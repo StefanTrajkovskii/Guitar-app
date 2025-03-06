@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { TextField, MenuItem, IconButton, Tabs, Tab } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ChordType, chordData, categories, difficulties } from './chordData';
 
 const AllChordsPage: React.FC = () => {
@@ -20,10 +21,23 @@ const AllChordsPage: React.FC = () => {
     return matchesCategory && matchesDifficulty && matchesSearch;
   });
 
+  const handleBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-purple-800 mb-8 text-center">Guitar Chord Library</h1>
+        <div className="flex items-center mb-8">
+          <IconButton 
+            onClick={handleBack}
+            className="mr-4 bg-white hover:bg-gray-100"
+            size="large"
+          >
+            <ArrowBackIcon />
+          </IconButton>
+          <h1 className="text-4xl font-bold text-purple-800 text-center flex-1">Guitar Chord Library</h1>
+        </div>
         
         {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -146,7 +160,8 @@ const AllChordsPage: React.FC = () => {
                 ))}
               </Tabs>
 
-              <div className="aspect-w-16 aspect-h-9 mb-6">
+              {/* Video container with increased height */}
+              <div className="aspect-w-16 aspect-h-10 mb-2">
                 {selectedChord.variations[selectedVariation].videoUrl ? (
                   <iframe
                     src={selectedChord.variations[selectedVariation].videoUrl!.replace('watch?v=', 'embed/')}
