@@ -35,7 +35,7 @@ export const songTutorials: { [key: number]: SongTutorial[] } = {
       difficulty: "Beginner",
       chords: ["G", "Cadd9"],
       strummingPattern: "G G G G, Cadd9 Cadd9 Cadd9 Cadd9",
-      videoUrl: "https://www.youtube.com/watch?v=GlPlfCy1urI",
+      videoUrl: "https://www.youtube.com/watch?v=5rcCiXqAShY",
       notes: "Perfect first song - uses basic open chords with simple strumming"
     }
   ],
@@ -52,13 +52,13 @@ export const songTutorials: { [key: number]: SongTutorial[] } = {
   ],
   4: [
     {
-      title: "Hey There Delilah",
-      artist: "Plain White T's",
-      difficulty: "Intermediate",
-      chords: ["D", "F#m", "Bm", "G", "A"],
-      strummingPattern: "D DU D DU",
-      videoUrl: "https://www.youtube.com/watch?v=EbxkOntz2SA",
-      notes: "Introduces fingerpicking pattern option"
+      title: "Let It Be",
+      artist: "The Beatles",
+      difficulty: "Beginner",
+      chords: ["G", "Dsus4","Em7", "Cadd9"],
+      strummingPattern: "GGGG GGDD EmEmCC GGDD CCGG, and continue without GGGG",
+      videoUrl: "https://www.youtube.com/watch?v=10g9Kcikdc0",
+      notes: "Classic Beatles song with a simple chord progression perfect for beginners"
     }
   ],
   5: [

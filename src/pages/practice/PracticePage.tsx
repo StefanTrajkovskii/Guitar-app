@@ -10,7 +10,6 @@ import PauseIcon from '@mui/icons-material/Pause';
 import StopIcon from '@mui/icons-material/Stop';
 import LevelUpIcon from '@mui/icons-material/TrendingUp';
 import StarIcon from '@mui/icons-material/Star';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import UnlockedContent from './UnlockedContent';
@@ -173,9 +172,9 @@ const LEVEL_REWARDS: LevelRewards = {
   4: {
     title: "Keep Going - New Song!",
     song: {
-      title: "",
-      artist: "",
-      tutorialUrl: "",
+      title: "Let It Be",
+      artist: "The Beatles",
+      tutorialUrl: "https://www.youtube.com/watch?v=10g9Kcikdc0",
       difficulty: "Beginner"
     }
   },
@@ -411,11 +410,6 @@ const PracticePage: React.FC = () => {
     window.history.back();
   };
 
-  const toggleRoutineComplete = (index: number) => {
-    const newRoutines = [...routines];
-    newRoutines[index].completed = !newRoutines[index].completed;
-    setRoutines(newRoutines);
-  };
 
   const toggleChallengeComplete = (id: number) => {
     const challenge = dailyChallenges.find(c => c.id === id);
