@@ -265,17 +265,7 @@ const PracticePage: React.FC = () => {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const {
-    selectedRoutine,
-    timeLeft,
-    isRunning,
-    currentExercise,
-    showPracticeModal,
-    startPractice,
-    endPractice,
-    toggleTimer,
-    nextExercise,
-    previousExercise,
-    setShowPracticeModal
+    startPractice
   } = usePracticeTimer();
 
   const getRandomChallenges = () => {
@@ -325,7 +315,7 @@ const PracticePage: React.FC = () => {
     return () => window.removeEventListener('focus', checkDate);
   }, []);
 
-  const [routines, setRoutines] = useState<PracticeRoutine[]>([
+  const routines: PracticeRoutine[] = [
     {
       duration: 15,
       title: "Quick Practice",
@@ -395,7 +385,7 @@ const PracticePage: React.FC = () => {
         "20. Cool Down: Free play and song practice"
       ]
     }
-  ]);
+  ];
 
   const handleBack = () => {
     window.history.back();
@@ -433,12 +423,6 @@ const PracticePage: React.FC = () => {
 
   const handleStartPractice = (routine: PracticeRoutine) => {
     startPractice(routine);
-  };
-
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   const handleResetLevel = () => {
