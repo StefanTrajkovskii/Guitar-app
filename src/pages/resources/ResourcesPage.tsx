@@ -6,10 +6,18 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import BuildIcon from '@mui/icons-material/Build';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StoreIcon from '@mui/icons-material/Store';
 import { useUser } from '../../contexts/UserContext';
 import martySchwartzImg from '../../assets/youtubers/marty-schwartz.jpg';
 import justinGuitarImg from '../../assets/youtubers/justin-guitar.jpg';
 import paulDavidsImg from '../../assets/youtubers/paul-davids.jpg';
+
+// App Logos
+import UltimateGuitarLogo from '../../assets/logos/UltimateGuitarLogo';
+import guitarTunaLogo from '../../assets/logos/guitar-tuna.png';
+import songsterrLogo from '../../assets/logos/songsterr.png';
+import mimiMuzikaLogo from '../../assets/logos/mimi-muzika.jpg';
+import artistLogo from '../../assets/logos/artist.png';
 
 interface Resource {
   title: string;
@@ -19,6 +27,7 @@ interface Resource {
   type: 'video' | 'article' | 'tool' | 'book' | 'gear';
   tags: string[];
   image?: string;
+  logo?: string | React.ReactNode;
 }
 
 const ResourcesPage: React.FC = () => {
@@ -61,7 +70,8 @@ const ResourcesPage: React.FC = () => {
       link: "https://www.ultimate-guitar.com/",
       difficulty: "Beginner",
       type: "tool",
-      tags: ["tabs", "chords", "songs"]
+      tags: ["tabs", "chords", "songs"],
+      logo: <UltimateGuitarLogo className="w-8 h-8 text-[#FF5500]" />
     },
     {
       title: "Guitar Tuna",
@@ -69,7 +79,8 @@ const ResourcesPage: React.FC = () => {
       link: "https://www.guitartuna.com/",
       difficulty: "Beginner",
       type: "tool",
-      tags: ["tuning", "tools", "practice"]
+      tags: ["tuning", "tools", "practice"],
+      logo: guitarTunaLogo
     },
     {
       title: "Songsterr",
@@ -77,7 +88,8 @@ const ResourcesPage: React.FC = () => {
       link: "https://www.songsterr.com/",
       difficulty: "Intermediate",
       type: "tool",
-      tags: ["tabs", "practice", "songs"]
+      tags: ["tabs", "practice", "songs"],
+      logo: songsterrLogo
     },
 
     // Books and Theory
@@ -98,24 +110,33 @@ const ResourcesPage: React.FC = () => {
       tags: ["theory", "scales", "harmony"]
     },
 
-    // Essential Gear
+    // Guitar Shops
     {
-      title: "Beginner Guitar Buying Guide",
-      description: "How to choose your first acoustic or electric guitar.",
-      link: "https://www.sweetwater.com/insync/buying-guide-how-to-choose-a-guitar/",
+      title: "Мими Музика",
+      description: "Официјален претставник на Fender, Takamine, Squier, Jackson, Gretsch и други реномирани брендови. Широк избор на гитари и музичка опрема.",
+      link: "https://shop.mimimuzika.com.mk/mk/",
       difficulty: "Beginner",
       type: "gear",
-      tags: ["shopping", "guitars", "equipment"]
+      tags: ["shop", "local", "guitars", "equipment"],
+      logo: mimiMuzikaLogo
     },
     {
-      title: "Essential Accessories Guide",
-      description: "Must-have accessories for every guitarist.",
-      link: "https://www.sweetwater.com/insync/essential-guitar-accessories/",
+      title: "ARTIST-SISTEMS",
+      description: "Комплетен избор на музички инструменти и опрема. Сѐ за свирење и фолирање!",
+      link: "https://artist.mk/",
       difficulty: "Beginner",
       type: "gear",
-      tags: ["accessories", "equipment", "tools"]
+      tags: ["shop", "local", "instruments", "equipment"],
+      logo: artistLogo
     }
   ];
+
+  const resourcesByCategory = {
+    youtubers: resources.filter(r => r.type === 'video'),
+    tools: resources.filter(r => r.type === 'tool'),
+    books: resources.filter(r => r.type === 'book'),
+    gear: resources.filter(r => r.type === 'gear')
+  };
 
   const handleBack = () => {
     window.history.back();
@@ -161,6 +182,57 @@ const ResourcesPage: React.FC = () => {
     }
   };
 
+  const renderResourceCard = (resource: Resource) => (
+    <a
+      href={resource.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl 
+                transform hover:-translate-y-1 cursor-pointer"
+    >
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          {typeof resource.logo === 'string' ? (
+            <img 
+              src={resource.logo} 
+              alt={`${resource.title} logo`}
+              className="w-8 h-8 object-contain"
+            />
+          ) : resource.logo ? (
+            resource.logo
+          ) : resource.type === 'video' && resource.image ? (
+            <img 
+              src={resource.image} 
+              alt={resource.title}
+              className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
+            />
+          ) : getIconForType(resource.type)}
+          <h3 className={`text-xl font-semibold ${colors.text.primary}`}>
+            {resource.title}
+          </h3>
+        </div>
+      </div>
+      
+      <p className={`${colors.text.secondary} mb-4 line-clamp-2`}>
+        {resource.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        <span className={`px-2 py-1 rounded-full text-sm font-medium ${getDifficultyColor(resource.difficulty)}`}>
+          {resource.difficulty}
+        </span>
+        {resource.tags.map((tag, tagIndex) => (
+          <span 
+            key={tagIndex}
+            className={`px-2 py-1 rounded-full text-sm font-medium bg-${colors.primary}-100 text-${colors.primary}-700`}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </a>
+  );
+
   return (
     <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} py-6 px-4`}>
       <div className="max-w-7xl mx-auto">
@@ -188,57 +260,62 @@ const ResourcesPage: React.FC = () => {
         </div>
 
         {/* Resource Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources.map((resource, index) => (
-            <a
-              key={index}
-              href={resource.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl 
-                       transform hover:-translate-y-1 cursor-pointer"
-            >
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <div className="flex items-center gap-3">
-                  {getIconForType(resource.type)}
-                  <h3 className={`text-xl font-semibold ${colors.text.primary}`}>
-                    {resource.title}
-                  </h3>
-                </div>
-                {resource.type === 'video' && resource.image && (
-                  <div className="flex-shrink-0">
-                    <img 
-                      src={resource.image} 
-                      alt={resource.title}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
-                    />
-                  </div>
-                )}
-              </div>
-              
-              <p className={`${colors.text.secondary} mb-4 line-clamp-2`}>
-                {resource.description}
-              </p>
+        <div className="space-y-12">
+          {/* YouTube Channels */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <YouTubeIcon className="text-red-500 text-3xl" />
+              <h2 className={`text-2xl font-semibold ${colors.text.primary}`}>
+                YouTube Channels
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {resourcesByCategory.youtubers.map((resource, index) => renderResourceCard(resource))}
+            </div>
+          </div>
 
-              <div className="flex flex-wrap gap-2">
-                <span className={`px-2 py-1 rounded-full text-sm font-medium ${getDifficultyColor(resource.difficulty)}`}>
-                  {resource.difficulty}
-                </span>
-                {resource.tags.map((tag, tagIndex) => (
-                  <span 
-                    key={tagIndex}
-                    className={`px-2 py-1 rounded-full text-sm font-medium bg-${colors.primary}-100 text-${colors.primary}-700`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))}
+          {/* Learning Tools */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <BuildIcon className="text-purple-500 text-3xl" />
+              <h2 className={`text-2xl font-semibold ${colors.text.primary}`}>
+                Learning Tools
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {resourcesByCategory.tools.map((resource, index) => renderResourceCard(resource))}
+            </div>
+          </div>
+
+          {/* Books and Theory */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <LibraryBooksIcon className="text-blue-500 text-3xl" />
+              <h2 className={`text-2xl font-semibold ${colors.text.primary}`}>
+                Books and Theory
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {resourcesByCategory.books.map((resource, index) => renderResourceCard(resource))}
+            </div>
+          </div>
+
+          {/* Guitar Shops */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <StoreIcon className="text-green-500 text-3xl" />
+              <h2 className={`text-2xl font-semibold ${colors.text.primary}`}>
+                Guitar Shops
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {resourcesByCategory.gear.map((resource, index) => renderResourceCard(resource))}
+            </div>
+          </div>
         </div>
 
         {/* Additional Tips Section */}
-        <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
+        <div className="mt-12 bg-white rounded-xl shadow-lg p-6">
           <h2 className={`text-2xl font-semibold ${colors.text.primary} mb-4`}>
             Pro Tips for Learning
           </h2>
@@ -277,4 +354,4 @@ const ResourcesPage: React.FC = () => {
   );
 };
 
-export default ResourcesPage; 
+export default ResourcesPage;
