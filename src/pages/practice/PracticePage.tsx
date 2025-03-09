@@ -14,6 +14,7 @@ import UnlockedContent from './UnlockedContent';
 import WarningIcon from '@mui/icons-material/Warning';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { usePracticeTimer } from '../../contexts/PracticeTimerContext';
+import { useUser } from '../../contexts/UserContext';
 
 interface PracticeRoutine {
   duration: number;
@@ -252,6 +253,7 @@ const getNextLevelXP = (currentXP: number) => {
 };
 
 const PracticePage: React.FC = () => {
+  const { colors } = useUser();
   const [activeTab, setActiveTab] = useState(0);
   const [streak, setStreak] = useState(0);
   const [totalXP, setTotalXP] = useState(() => {
@@ -432,7 +434,7 @@ const PracticePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 p-6">
+    <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} p-6`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center mb-8">
           <IconButton 
@@ -442,7 +444,7 @@ const PracticePage: React.FC = () => {
           >
             <ArrowBackIcon />
           </IconButton>
-          <h1 className="text-4xl font-bold text-purple-800 text-center flex-1">Practice Room</h1>
+          <h1 className={`text-4xl font-bold ${colors.text.primary} text-center flex-1`}>Practice Room</h1>
         </div>
 
         {/* Streak and Stats */}
@@ -450,8 +452,8 @@ const PracticePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Streak */}
             <div className="flex items-center justify-center">
-              <WhatshotIcon className="text-orange-500 mr-2" />
-              <span className="text-2xl font-bold text-orange-500">{streak} Day Streak!</span>
+              <WhatshotIcon className={colors.text.primary} />
+              <span className={`text-2xl font-bold ${colors.text.primary}`}>{streak} Day Streak!</span>
             </div>
 
             {/* Level and XP */}
@@ -459,7 +461,7 @@ const PracticePage: React.FC = () => {
               <StarIcon className="text-yellow-500 mr-2" />
               <div>
                 <div className="flex items-center gap-2 justify-center">
-                  <div className="text-xl font-bold text-purple-800">Level {currentLevel}</div>
+                  <div className={`text-xl font-bold ${colors.text.primary}`}>Level {currentLevel}</div>
                   <IconButton
                     size="small"
                     color="error"
@@ -476,7 +478,7 @@ const PracticePage: React.FC = () => {
                 {/* XP Progress Bar */}
                 <div className="w-full h-2 bg-gray-200 rounded-full mt-1">
                   <div 
-                    className="h-full bg-purple-500 rounded-full transition-all duration-300"
+                    className={`h-full bg-${colors.primary}-500 rounded-full transition-all duration-300`}
                     style={{ 
                       width: `${((totalXP - LEVEL_THRESHOLDS[currentLevel - 1]) / 
                         (nextLevelXP - LEVEL_THRESHOLDS[currentLevel - 1])) * 100}%` 
@@ -489,7 +491,7 @@ const PracticePage: React.FC = () => {
             {/* Challenges Progress */}
             <div className="flex items-center justify-center">
               <EmojiEventsIcon className="text-yellow-500 mr-2" />
-              <span className="text-xl font-semibold text-gray-700">
+              <span className={`text-xl font-semibold ${colors.text.secondary}`}>
                 {dailyChallenges.filter(c => c.completed).length} / {dailyChallenges.length} Challenges
               </span>
             </div>
@@ -499,7 +501,7 @@ const PracticePage: React.FC = () => {
         {/* Level Up Animation with Rewards */}
         {showLevelUp && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-purple-800 text-white px-8 py-4 rounded-xl shadow-2xl text-center">
+            <div className={`bg-${colors.primary}-600 text-white px-8 py-4 rounded-xl shadow-2xl text-center`}>
               <div className="flex items-center gap-2 justify-center mb-4">
                 <LevelUpIcon className="text-yellow-400" />
                 <span className="text-2xl font-bold">Level Up! You're now level {currentLevel}!</span>
@@ -519,41 +521,40 @@ const PracticePage: React.FC = () => {
         {/* Rewards Modal */}
         {showRewards && LEVEL_REWARDS[currentLevel] && (
           <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 max-w-md w-full text-center transform transition-all shadow-2xl">
+            <div className={`bg-gradient-to-br ${colors.gradient.from} ${colors.gradient.to} rounded-2xl p-8 max-w-md w-full text-center transform transition-all shadow-2xl`}>
               <div className="relative mb-6">
                 <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-purple-600 rounded-full p-4 shadow-lg">
-                    <CardGiftcardIcon className="text-white text-4xl animate-bounce " />
+                  <div className={`bg-${colors.primary}-600 rounded-full p-4 shadow-lg`}>
+                    <CardGiftcardIcon className="text-white text-4xl animate-bounce" />
                   </div>
                 </div>
               </div>
               
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+              <h2 className={`text-3xl font-bold ${colors.text.primary} mb-6`}>
                 {LEVEL_REWARDS[currentLevel].title}
               </h2>
               
               <div className="bg-white rounded-xl p-6 mb-6 shadow-inner transform transition-all hover:scale-105">
                 <div className="flex flex-col items-center gap-3">
-                  <LibraryMusicIcon className="text-purple-600 text-3xl" />
-                  <h3 className="text-2xl font-bold text-purple-900">
+                  <LibraryMusicIcon className={colors.text.primary} />
+                  <h3 className={`text-2xl font-bold ${colors.text.primary}`}>
                     {LEVEL_REWARDS[currentLevel].song.title}
                   </h3>
                   <p className="text-lg text-gray-700 italic">by {LEVEL_REWARDS[currentLevel].song.artist}</p>
                   <span className={`px-4 py-2 rounded-full text-sm font-semibold shadow-sm
                     ${LEVEL_REWARDS[currentLevel].song.difficulty === 'Beginner' 
-                      ? 'bg-gradient-to-r from-green-400 to-green-500 text-white' 
+                      ? 'bg-green-500 text-white' 
                       : LEVEL_REWARDS[currentLevel].song.difficulty === 'Intermediate'
-                      ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-white'
-                      : 'bg-gradient-to-r from-red-400 to-red-500 text-white'}`}>
+                      ? 'bg-yellow-500 text-white'
+                      : 'bg-red-500 text-white'}`}>
                     {LEVEL_REWARDS[currentLevel].song.difficulty}
                   </span>
                   <Button
                     variant="contained"
-                    color="primary"
                     href={LEVEL_REWARDS[currentLevel].song.tutorialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transform transition-all hover:scale-105 shadow-lg"
+                    className={`mt-4 bg-${colors.primary}-600 hover:bg-${colors.primary}-700 transform transition-all hover:scale-105 shadow-lg`}
                     startIcon={<PlayArrowIcon />}
                   >
                     Watch Tutorial
@@ -567,7 +568,7 @@ const PracticePage: React.FC = () => {
                   setShowRewards(false);
                   setShowLevelUp(false);
                 }}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg py-3 px-8 rounded-full transform transition-all hover:scale-105 shadow-lg"
+                className={`bg-${colors.primary}-600 hover:bg-${colors.primary}-700 text-lg py-3 px-8 rounded-full transform transition-all hover:scale-105 shadow-lg`}
               >
                 Awesome!
               </Button>
@@ -621,16 +622,19 @@ const PracticePage: React.FC = () => {
           onChange={(_, newValue) => setActiveTab(newValue)}
           className="bg-white rounded-t-xl shadow-lg mb-4"
           variant="fullWidth"
+          TabIndicatorProps={{
+            style: { backgroundColor: `var(--${colors.primary}-600)` }
+          }}
         >
           <Tab
             icon={<TimerIcon />}
             label="Practice"
-            className="py-4"
+            className={`py-4 ${colors.text.primary}`}
           />
           <Tab
             icon={<LibraryMusicIcon />}
             label="Unlocked Content"
-            className="py-4"
+            className={`py-4 ${colors.text.primary}`}
           />
         </Tabs>
 
@@ -639,7 +643,7 @@ const PracticePage: React.FC = () => {
           <>
             {/* Practice Routines */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-purple-800 mb-4">Practice Routines</h2>
+              <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>Practice Routines</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {routines.map((routine, index) => (
                   <div 
@@ -650,15 +654,15 @@ const PracticePage: React.FC = () => {
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center">
-                        <TimerIcon className="text-purple-600 mr-2" />
+                        <TimerIcon className={colors.text.primary} />
                         <span className="text-xl font-semibold">{routine.duration} min</span>
                       </div>
                       {routine.completed && (
                         <CheckCircleIcon className="text-green-500" />
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold text-purple-900 mb-2">{routine.title}</h3>
-                    <p className="text-gray-600">{routine.description}</p>
+                    <h3 className={`text-lg font-semibold ${colors.text.primary} mb-2`}>{routine.title}</h3>
+                    <p className={colors.text.secondary}>{routine.description}</p>
                   </div>
                 ))}
               </div>
@@ -666,7 +670,7 @@ const PracticePage: React.FC = () => {
 
             {/* Daily Challenges */}
             <div>
-              <h2 className="text-2xl font-bold text-purple-800 mb-4">Daily Challenges</h2>
+              <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>Daily Challenges</h2>
               <div className="space-y-4">
                 {dailyChallenges.map((challenge) => (
                   <div 
@@ -678,7 +682,7 @@ const PracticePage: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="flex items-center gap-2 mb-2">
-                          <h3 className="text-lg font-semibold text-purple-900">{challenge.title}</h3>
+                          <h3 className={`text-lg font-semibold ${colors.text.primary}`}>{challenge.title}</h3>
                           <span className={`px-2 py-1 rounded-full text-xs
                             ${challenge.difficulty === 'Beginner' ? 'bg-green-100 text-green-700' :
                               challenge.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
@@ -686,10 +690,10 @@ const PracticePage: React.FC = () => {
                             {challenge.difficulty}
                           </span>
                         </div>
-                        <p className="text-gray-600">{challenge.description}</p>
+                        <p className={colors.text.secondary}>{challenge.description}</p>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="text-purple-600 font-semibold">+{challenge.xp} XP</span>
+                        <span className={`font-semibold ${colors.text.primary}`}>+{challenge.xp} XP</span>
                         {challenge.completed && (
                           <CheckCircleIcon className="text-green-500" />
                         )}

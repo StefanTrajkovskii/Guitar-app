@@ -7,30 +7,30 @@ interface Props {
 }
 
 const TuningTime: React.FC<Props> = ({ onBack, onComplete }) => {
-  const { name } = useUser();
+  const { name, colors } = useUser();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
+    <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} py-6 px-4`}>
       <div className="max-w-lg mx-auto">
         {/* Back button */}
         <button 
           onClick={onBack}
-          className="mb-6 text-purple-700 hover:text-purple-900 flex items-center gap-2"
+          className={`mb-6 ${colors.text.primary} hover:${colors.text.secondary} flex items-center gap-2`}
         >
           <span className="text-2xl">←</span> Back to Lessons
         </button>
 
         {/* Header */}
-        <h2 className="text-2xl font-bold text-purple-800 mb-4">
+        <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>
           Tuning Time 🎵
         </h2>
 
         {/* Main content */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-semibold text-purple-800 mb-4">
+          <h3 className={`text-xl font-semibold ${colors.text.primary} mb-4`}>
             Let's Tune Your Guitar!
           </h3>
-          <div className="space-y-4 text-purple-600">
+          <div className={`space-y-4 ${colors.text.secondary}`}>
             <p>
               Hey {name}! Open your GuitarTuna app and follow these simple steps:
             </p>

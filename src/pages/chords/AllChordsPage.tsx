@@ -5,8 +5,10 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ChordType, chordData, categories, difficulties } from './chordData';
+import { useUser } from '../../contexts/UserContext';
 
 const AllChordsPage: React.FC = () => {
+  const { colors } = useUser();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -26,7 +28,7 @@ const AllChordsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 p-6">
+    <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} p-6`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center mb-8">
           <IconButton 
@@ -36,7 +38,7 @@ const AllChordsPage: React.FC = () => {
           >
             <ArrowBackIcon />
           </IconButton>
-          <h1 className="text-4xl font-bold text-purple-800 text-center flex-1">Guitar Chord Library</h1>
+          <h1 className={`text-4xl font-bold ${colors.text.primary} text-center flex-1`}>Guitar Chord Library</h1>
         </div>
         
         {/* Filters */}
@@ -94,7 +96,7 @@ const AllChordsPage: React.FC = () => {
               }}
             >
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-semibold text-purple-700">{chord.name}</h3>
+                <h3 className={`text-2xl font-semibold ${colors.text.primary}`}>{chord.name}</h3>
                 <span className={`px-3 py-1 rounded-full text-sm ${
                   chord.variations[0].difficulty === 'Beginner' ? 'bg-green-100 text-green-700' :
                   chord.variations[0].difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
@@ -107,16 +109,19 @@ const AllChordsPage: React.FC = () => {
               <p className="text-gray-600 mb-4">{chord.variations[0].diagram}</p>
               
               <div className="flex justify-between items-center">
-                <span className="text-sm text-purple-600">{chord.category}</span>
+                <span className={colors.text.secondary}>{chord.category}</span>
                 <div className="flex items-center">
                   <span className="text-sm text-gray-500 mr-2">{chord.variations.length} variations</span>
-                  <IconButton color="primary" onClick={(e) => {
-                    e.stopPropagation();
-                    // Add sound playing logic here
-                  }}>
+                  <IconButton 
+                    className={colors.text.primary}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Add sound playing logic here
+                    }}
+                  >
                     <PlayCircleOutlineIcon />
                   </IconButton>
-                  <IconButton color="primary">
+                  <IconButton className={colors.text.primary}>
                     <InfoOutlinedIcon />
                   </IconButton>
                 </div>
@@ -131,7 +136,7 @@ const AllChordsPage: React.FC = () => {
                onClick={() => setSelectedChord(null)}>
             <div className="bg-white rounded-xl p-6 max-w-2xl w-full"
                  onClick={(e) => e.stopPropagation()}>
-              <h2 className="text-3xl font-bold text-purple-800 mb-4">{selectedChord.name}</h2>
+              <h2 className={`text-3xl font-bold ${colors.text.primary} mb-4`}>{selectedChord.name}</h2>
               
               {/* Variations Tabs */}
               <Tabs
@@ -160,7 +165,7 @@ const AllChordsPage: React.FC = () => {
                 ))}
               </Tabs>
 
-              {/* Video container with increased height */}
+              {/* Video container */}
               <div className="aspect-w-16 aspect-h-10 mb-2">
                 {selectedChord.variations[selectedVariation].videoUrl ? (
                   <iframe
@@ -177,14 +182,14 @@ const AllChordsPage: React.FC = () => {
                 )}
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                <h3 className="font-semibold mb-2">{selectedChord.variations[selectedVariation].position}</h3>
+              <div className={`bg-${colors.primary}-50 rounded-lg p-4 mb-4`}>
+                <h3 className={`font-semibold mb-2 ${colors.text.primary}`}>{selectedChord.variations[selectedVariation].position}</h3>
                 <p className="text-lg mb-2 font-mono">{selectedChord.variations[selectedVariation].diagram}</p>
-                <p className="text-gray-700">{selectedChord.variations[selectedVariation].description}</p>
+                <p className={colors.text.secondary}>{selectedChord.variations[selectedVariation].description}</p>
               </div>
 
               <button
-                className="mt-6 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700"
+                className={`mt-6 bg-${colors.primary}-600 text-white px-6 py-2 rounded-lg hover:bg-${colors.primary}-700`}
                 onClick={() => setSelectedChord(null)}
               >
                 Close

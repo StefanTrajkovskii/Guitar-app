@@ -16,7 +16,7 @@ interface LessonSection {
 }
 
 const BasicsPage: React.FC = () => {
-  const { name } = useUser();
+  const { name, colors } = useUser();
   const [currentSection, setCurrentSection] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
   const [completedLessons, setCompletedLessons] = useState<number[]>([]);
@@ -77,7 +77,7 @@ const BasicsPage: React.FC = () => {
   }
 
   return (
-    <div className="py-6 min-h-screen bg-gradient-to-b from-purple-100 to-pink-100">
+    <div className={`py-6 min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to}`}>
       <div className="container px-4 mx-auto">
         <div className="flex items-center mb-8">
           <IconButton 
@@ -91,10 +91,10 @@ const BasicsPage: React.FC = () => {
 
         {/* Main content */}
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-3xl font-bold text-purple-800 md:text-4xl">
+          <h1 className={`mb-2 text-3xl font-bold ${colors.text.primary} md:text-4xl`}>
             Guitar Basics
           </h1>
-          <p className="text-lg text-purple-600">
+          <p className={`text-lg ${colors.text.secondary}`}>
             Hey {name}! Let's start with the fundamentals 
           </p>
         </div>
@@ -102,8 +102,11 @@ const BasicsPage: React.FC = () => {
         {/* Progress bar */}
         <div className="mb-8 w-full h-4 bg-white rounded-full shadow-inner">
           <div 
-            className="h-full bg-purple-500 rounded-full transition-all duration-300"
-            style={{ width: `${(completedLessons.length / lessons.length) * 100}%` }}
+            className="h-full rounded-full transition-all duration-300"
+            style={{ 
+              width: `${(completedLessons.length / lessons.length) * 100}%`,
+              backgroundColor: colors.primary === 'orange' ? '#f97316' : '#a855f7'
+            }}
           />
         </div>
 
@@ -115,7 +118,7 @@ const BasicsPage: React.FC = () => {
               onClick={() => handleStartLesson(index)}
               className={`w-full text-left p-6 rounded-xl transition-all duration-200
                 bg-white shadow-lg hover:shadow-xl cursor-pointer
-                ${index === currentSection && 'ring-2 ring-purple-400'}`}
+                ${index === currentSection && `ring-2 ring-${colors.primary}-400`}`}
             >
               <div className="flex gap-4 items-center justify-between">
                 <div className="flex gap-4 items-center">
@@ -128,10 +131,10 @@ const BasicsPage: React.FC = () => {
                     {completedLessons.includes(index) ? '✓' : index + 1}
                   </div>
                   <div>
-                    <h3 className="mb-1 text-xl font-semibold text-purple-900">
+                    <h3 className={`mb-1 text-xl font-semibold ${colors.text.primary}`}>
                       {lesson.title}
                     </h3>
-                    <p className="text-purple-600">
+                    <p className={colors.text.secondary}>
                       {lesson.description}
                     </p>
                   </div>
@@ -160,10 +163,10 @@ const BasicsPage: React.FC = () => {
 
         {/* Tip of the day */}
         <div className="p-6 mt-8 bg-white rounded-xl shadow-lg">
-          <h3 className="mb-2 text-lg font-semibold text-purple-800">
+          <h3 className={`mb-2 text-lg font-semibold ${colors.text.primary}`}>
             Quick Tip
           </h3>
-          <p className="text-purple-600">
+          <p className={colors.text.secondary}>
             Take your time with each section. It's better to learn slowly and correctly
             than to rush through the basics. You're doing great! 
           </p>

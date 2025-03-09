@@ -8,34 +8,34 @@ interface Props {
 }
 
 const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
-  const { name } = useUser();
+  const { name, colors } = useUser();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
+    <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} py-6 px-4`}>
       <div className="max-w-lg mx-auto">
         {/* Back button */}
         <button 
           onClick={onBack}
-          className="mb-6 text-purple-700 hover:text-purple-900 flex items-center gap-2"
+          className={`mb-6 ${colors.text.primary} hover:${colors.text.secondary} flex items-center gap-2`}
         >
           <span className="text-2xl">←</span> Back to Lessons
         </button>
 
         {/* Header */}
-        <h2 className="text-2xl font-bold text-purple-800 mb-4">
+        <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>
           String Names 🎸
         </h2>
-        <p className="text-purple-600 mb-6">
+        <p className={`${colors.text.secondary} mb-6`}>
           Hey {name}! Let's learn the names of each string on your guitar. We'll start from
           the thickest string (bottom) to the thinnest string (top).
         </p>
 
         {/* String Overview */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-semibold text-purple-800 mb-4">
+          <h3 className={`text-xl font-semibold ${colors.text.primary} mb-4`}>
             Quick Overview
           </h3>
-          <p className="text-purple-600 mb-4">
+          <p className={`${colors.text.secondary} mb-4`}>
             Guitar strings are numbered from 1 to 6, with string 1 being the thinnest (top) 
             and string 6 being the thickest (bottom).
           </p>
@@ -53,12 +53,12 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 6 (E) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 6
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">Low E String</h4>
-                <p className="text-purple-600">Thickest string • Bottom string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>Low E String</h4>
+                <p className={colors.text.secondary}>Thickest string • Bottom string</p>
               </div>
             </div>
           </div>
@@ -66,12 +66,12 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 5 (A) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 5
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">A String</h4>
-                <p className="text-purple-600">Second thickest string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>A String</h4>
+                <p className={colors.text.secondary}>Second thickest string</p>
               </div>
             </div>
           </div>
@@ -79,12 +79,12 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 4 (D) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 4
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">D String</h4>
-                <p className="text-purple-600">Middle thick string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>D String</h4>
+                <p className={colors.text.secondary}>Middle thick string</p>
               </div>
             </div>
           </div>
@@ -92,12 +92,12 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 3 (G) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 3
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">G String</h4>
-                <p className="text-purple-600">Middle thin string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>G String</h4>
+                <p className={colors.text.secondary}>Middle thin string</p>
               </div>
             </div>
           </div>
@@ -105,12 +105,12 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 2 (B) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 2
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">B String</h4>
-                <p className="text-purple-600">Second thinnest string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>B String</h4>
+                <p className={colors.text.secondary}>Second thinnest string</p>
               </div>
             </div>
           </div>
@@ -118,26 +118,26 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           {/* String 1 (E) */}
           <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 font-bold text-xl">
+              <div className={`w-12 h-12 bg-${colors.primary}-100 rounded-full flex items-center justify-center ${colors.text.primary} font-bold text-xl`}>
                 1
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-purple-800">High E String</h4>
-                <p className="text-purple-600">Thinnest string • Top string</p>
+                <h4 className={`text-lg font-semibold ${colors.text.primary}`}>High E String</h4>
+                <p className={colors.text.secondary}>Thinnest string • Top string</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Memory Tips */}
-        <div className="mt-6 bg-purple-50 rounded-xl p-6 shadow-lg border border-purple-100">
-          <h3 className="text-lg font-semibold text-purple-800 mb-3">
+        <div className={`mt-6 bg-${colors.primary}-50 rounded-xl p-6 shadow-lg border border-${colors.primary}-100`}>
+          <h3 className={`text-lg font-semibold ${colors.text.primary} mb-3`}>
             Memory Tips 💡
           </h3>
-          <p className="text-purple-600 mb-4">
+          <p className={`${colors.text.secondary} mb-4`}>
             Here are some fun ways to remember the string names (from thickest to thinnest):
           </p>
-          <div className="space-y-3 text-purple-600">
+          <div className={`space-y-3 ${colors.text.secondary}`}>
             <p>
               <span className="font-semibold">1.</span> "Every Amateur Does Get Better Eventually"
             </p>
@@ -148,14 +148,14 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
         </div>
 
         {/* Practice Exercise */}
-        <div className="mt-6 bg-purple-50 rounded-xl p-6 shadow-lg border border-purple-100">
-          <h3 className="text-lg font-semibold text-purple-800 mb-3">
+        <div className={`mt-6 bg-${colors.primary}-50 rounded-xl p-6 shadow-lg border border-${colors.primary}-100`}>
+          <h3 className={`text-lg font-semibold ${colors.text.primary} mb-3`}>
             Practice Exercise 🎸
           </h3>
-          <p className="text-purple-600 mb-4">
+          <p className={`${colors.text.secondary} mb-4`}>
             Try this simple exercise to memorize the strings:
           </p>
-          <ol className="list-decimal pl-5 text-purple-600 space-y-3">
+          <ol className={`list-decimal pl-5 ${colors.text.secondary} space-y-3`}>
             <li>
               Starting from the thickest string (6th), say its name and number out loud
             </li>
@@ -185,10 +185,10 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
 
         {/* Final Tip */}
         <div className="mt-6 bg-white rounded-xl p-6 shadow-lg">
-          <h3 className="text-lg font-semibold text-purple-800 mb-2">
+          <h3 className={`text-lg font-semibold ${colors.text.primary} mb-2`}>
             Remember
           </h3>
-          <p className="text-purple-600">
+          <p className={colors.text.secondary}>
             Don't worry if it takes time to remember all the strings - everyone learns at their own pace!
             The memory tricks can really help, and with practice, it'll become second nature.
           </p>
