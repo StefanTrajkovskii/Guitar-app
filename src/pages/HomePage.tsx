@@ -114,6 +114,7 @@ const HomePage: React.FC = () => {
                          hover:bg-${colors.primary}-50 focus:outline-none focus:ring-2 
                          focus:ring-${colors.primary}-300 min-h-[120px]
                          flex flex-col items-center justify-center`}
+              onClick={() => navigate('/resources')}
             >
               <h2 className={`text-xl font-semibold ${colors.text.primary} mb-2`}>Resources</h2>
               <p className={colors.text.secondary}>Helpful guides and tips</p>
