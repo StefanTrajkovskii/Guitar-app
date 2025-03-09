@@ -393,6 +393,34 @@ const PracticePage: React.FC = () => {
     window.history.back();
   };
 
+  // Add ESC key handler
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        // If any modal is open, close it first
+        if (showResetConfirm) {
+          setShowResetConfirm(false);
+        } else if (showRewards) {
+          setShowRewards(false);
+          setShowLevelUp(false);
+        } else if (showLevelUp) {
+          setShowLevelUp(false);
+        } else {
+          // If no modals are open, go back
+          handleBack();
+        }
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('keydown', handleEscKey);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('keydown', handleEscKey);
+    };
+  }, [showResetConfirm, showRewards, showLevelUp]); // Dependencies for the effect
+
   const toggleChallengeComplete = (id: number) => {
     const challenge = dailyChallenges.find(c => c.id === id);
     if (!challenge || challenge.completed) return;

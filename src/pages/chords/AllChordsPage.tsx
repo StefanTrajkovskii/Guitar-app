@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TextField, MenuItem, IconButton, Tabs, Tab } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
@@ -26,6 +26,22 @@ const AllChordsPage: React.FC = () => {
   const handleBack = () => {
     window.history.back();
   };
+
+  // Add ESC key handler
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (selectedChord) {
+          setSelectedChord(null);
+        } else {
+          handleBack();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleEscKey);
+    return () => window.removeEventListener('keydown', handleEscKey);
+  }, [selectedChord]);
 
   return (
     <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} p-6`}>

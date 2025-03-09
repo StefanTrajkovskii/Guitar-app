@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import guitarDiagram from '../../assets/acoustic_guitar_anatomy.jpg';
 import { useUser } from '../../contexts/UserContext';
 
@@ -9,6 +9,18 @@ interface Props {
 
 const GuitarAnatomy: React.FC<Props> = ({ onBack, onComplete }) => {
   const { name, colors } = useUser();
+
+  // Add ESC key handler
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onBack();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscKey);
+    return () => window.removeEventListener('keydown', handleEscKey);
+  }, [onBack]);
 
   return (
     <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to} py-6 px-4`}>

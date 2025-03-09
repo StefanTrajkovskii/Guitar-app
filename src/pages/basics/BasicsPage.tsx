@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GuitarAnatomy from './GuitarAnatomy';
@@ -66,6 +66,26 @@ const BasicsPage: React.FC = () => {
     setShowLesson(false);
   };
 
+  const handleBack = () => {
+    if (!showLesson) {
+      window.history.back();
+    } else {
+      setShowLesson(false);
+    }
+  };
+
+  // Add ESC key handler
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleBack();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscKey);
+    return () => window.removeEventListener('keydown', handleEscKey);
+  }, [showLesson]); // Add showLesson to dependencies
+
   if (showLesson) {
     const CurrentLesson = lessons[currentSection].component;
     return (
@@ -81,7 +101,7 @@ const BasicsPage: React.FC = () => {
       <div className="container px-4 mx-auto">
         <div className="flex items-center mb-8">
           <IconButton 
-            onClick={() => window.history.back()}
+            onClick={handleBack}
             className="mr-4 bg-white hover:bg-gray-100"
             size="large"
           >
