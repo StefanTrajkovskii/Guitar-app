@@ -3,23 +3,23 @@
   "name": "Guitar Learning App",
   "icons": [
     {
-      "src": "electric-guitar.svg",
+      "src": "guitar-favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg+xml"
+      "type": "image/x-icon"
     },
     {
-      "src": "electric-guitar.svg",
-      "type": "image/svg+xml",
+      "src": "guitar-logo192.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "electric-guitar.svg",
-      "type": "image/svg+xml",
+      "src": "guitar-logo512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#8B5CF6",
+  "theme_color": "#000000",
   "background_color": "#ffffff"
 }

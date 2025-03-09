@@ -1,4 +1,5 @@
 import React from 'react';
+import { useUser } from '../../contexts/UserContext';
 
 interface Props {
   onBack: () => void;
@@ -6,6 +7,8 @@ interface Props {
 }
 
 const TuningTime: React.FC<Props> = ({ onBack, onComplete }) => {
+  const { name } = useUser();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
       <div className="max-w-lg mx-auto">
@@ -29,7 +32,7 @@ const TuningTime: React.FC<Props> = ({ onBack, onComplete }) => {
           </h3>
           <div className="space-y-4 text-purple-600">
             <p>
-              Hey Malecka! Open your GuitarTuna app and follow these simple steps:
+              Hey {name}! Open your GuitarTuna app and follow these simple steps:
             </p>
             <ol className="list-decimal pl-5 space-y-2">
               <li>Open GuitarTuna on your phone</li>

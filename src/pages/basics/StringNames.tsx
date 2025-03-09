@@ -1,5 +1,6 @@
 import React from 'react';
 import stringNamesImage from '../../assets/lessons/strings/String_names.png';
+import { useUser } from '../../contexts/UserContext';
 
 interface Props {
   onBack: () => void;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
+  const { name } = useUser();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
       <div className="max-w-lg mx-auto">
@@ -23,7 +26,7 @@ const StringNames: React.FC<Props> = ({ onBack, onComplete }) => {
           String Names 🎸
         </h2>
         <p className="text-purple-600 mb-6">
-          Hey Malecka! Let's learn the names of each string on your guitar. We'll start from
+          Hey {name}! Let's learn the names of each string on your guitar. We'll start from
           the thickest string (bottom) to the thinnest string (top).
         </p>
 

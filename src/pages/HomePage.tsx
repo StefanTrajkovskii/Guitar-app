@@ -1,16 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Dialog, TextField, Button } from '@mui/material';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const [showNameDialog, setShowNameDialog] = useState(false);
+  const [name, setName] = useState(() => localStorage.getItem('userName') || 'Guitarist');
+
+  const handleNameSubmit = () => {
+    if (name.trim()) {
+      localStorage.setItem('userName', name.trim());
+      setShowNameDialog(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100">
+      {/* Name Input Dialog */}
+      <Dialog 
+        open={showNameDialog} 
+        onClose={() => {
+          if (name.trim()) handleNameSubmit();
+        }}
+      >
+        <div className="p-6">
+          <h2 className="text-2xl font-bold text-purple-800 mb-4">Change Your Name</h2>
+          <TextField
+            autoFocus
+            fullWidth
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' && name.trim()) {
+                handleNameSubmit();
+              }
+            }}
+            placeholder="Your name"
+            className="mb-12"
+          />
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={handleNameSubmit}
+            disabled={!name.trim()}
+            className="bg-blue-500 hover:bg-blue-600 text-white py-3"
+          >
+            SAVE NAME
+          </Button>
+        </div>
+      </Dialog>
+
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">
           {/* Welcoming header - larger on desktop, comfortable on mobile */}
           <h1 className="text-3xl md:text-5xl font-bold text-purple-800 mb-4">
-            Welcome, Malecka! 🎸
+            Welcome,{' '}
+            <button 
+              onClick={() => setShowNameDialog(true)}
+              className="hover:text-purple-600 transition-colors duration-200"
+            >
+              {name}! 🎸
+            </button>
           </h1>
           <p className="text-lg md:text-xl text-purple-600 mb-6">
             Ready to start your guitar journey?

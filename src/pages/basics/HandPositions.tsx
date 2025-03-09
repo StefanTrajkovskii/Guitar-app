@@ -1,4 +1,5 @@
 import React from 'react';
+import { useUser } from '../../contexts/UserContext';
 
 interface Props {
   onBack: () => void;
@@ -6,6 +7,8 @@ interface Props {
 }
 
 const HandPositions: React.FC<Props> = ({ onBack, onComplete }) => {
+  const { name } = useUser();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
       <div className="max-w-lg mx-auto">
@@ -22,7 +25,7 @@ const HandPositions: React.FC<Props> = ({ onBack, onComplete }) => {
           Hand Positions 🤚
         </h2>
         <p className="text-purple-600 mb-6">
-          Hey Malecka! Let's learn how to position both hands correctly. This is super important
+          Hey {name}! Let's learn how to position both hands correctly. This is super important
           for playing cleanly and comfortably!
         </p>
 

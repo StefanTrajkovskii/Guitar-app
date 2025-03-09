@@ -6,6 +6,7 @@ import PerfectPosture from './PerfectPosture';
 import HandPositions from './HandPositions';
 import StringNames from './StringNames';
 import TuningTime from './TuningTime';
+import { useUser } from '../../contexts/UserContext';
 
 interface LessonSection {
   id: string;
@@ -15,6 +16,7 @@ interface LessonSection {
 }
 
 const BasicsPage: React.FC = () => {
+  const { name } = useUser();
   const [currentSection, setCurrentSection] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
   const [completedLessons, setCompletedLessons] = useState<number[]>([]);
@@ -93,7 +95,7 @@ const BasicsPage: React.FC = () => {
             Guitar Basics
           </h1>
           <p className="text-lg text-purple-600">
-            Hey Malecka! Let's start with the fundamentals 
+            Hey {name}! Let's start with the fundamentals 
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import guitarDiagram from '../../assets/acoustic_guitar_anatomy.jpg';
+import { useUser } from '../../contexts/UserContext';
 
 interface Props {
   onBack: () => void;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const GuitarAnatomy: React.FC<Props> = ({ onBack, onComplete }) => {
+  const { name } = useUser();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 py-6 px-4">
       <div className="max-w-lg mx-auto">
@@ -23,7 +26,7 @@ const GuitarAnatomy: React.FC<Props> = ({ onBack, onComplete }) => {
           Meet Your Guitar 🎸
         </h2>
         <p className="text-purple-600 mb-6">
-          Hey Malecka! Let's learn about the different parts of your guitar.
+          Hey {name}! Let's learn about the different parts of your guitar.
           Take a good look at this diagram - these are the main parts you'll need to know!
         </p>
 
