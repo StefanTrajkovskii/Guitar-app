@@ -1,35 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, TextField, Button } from '@mui/material';
 import { useUser } from '../contexts/UserContext';
+import '../styles/animations.css';
+import backgroundImage from '../assets/images/Background-guitar.jpg';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [showNameDialog, setShowNameDialog] = useState(false);
   const { name, colors } = useUser();
   const [newName, setNewName] = useState(name);
+  const [mounted, setMounted] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (showNameDialog && inputRef.current) {
+      // Small timeout to ensure the dialog is fully rendered
+      setTimeout(() => {
+        inputRef.current?.focus();
+        inputRef.current?.select();
+      }, 50);
+    }
+  }, [showNameDialog]);
 
   const handleNameSubmit = () => {
     if (newName.trim()) {
       localStorage.setItem('userName', newName.trim());
-      window.location.reload(); // Reload to update colors
+      window.location.reload();
       setShowNameDialog(false);
     }
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${colors.gradient.from} ${colors.gradient.to}`}>
+    <div 
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#000',
+        minHeight: '100vh',
+        width: '100%',
+      }}
+    >
+      {/* Darker overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
+      
       {/* Name Input Dialog */}
       <Dialog 
         open={showNameDialog} 
         onClose={() => {
           if (newName.trim()) handleNameSubmit();
         }}
+        TransitionProps={{
+          onEntered: () => {
+            inputRef.current?.focus();
+            inputRef.current?.select();
+          }
+        }}
       >
         <div className="p-6">
           <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>Change Your Name</h2>
           <TextField
-            autoFocus
+            inputRef={inputRef}
             fullWidth
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
@@ -46,84 +84,81 @@ const HomePage: React.FC = () => {
             fullWidth
             onClick={handleNameSubmit}
             disabled={!newName.trim()}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-3"
+            className={`${colors.primary} hover:${colors.primary}-600 text-white py-3`}
           >
             SAVE NAME
           </Button>
         </div>
       </Dialog>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="text-center">
-          {/* Welcoming header - larger on desktop, comfortable on mobile */}
-          <h1 className={`text-3xl md:text-5xl font-bold ${colors.text.primary} mb-4`}>
-            Welcome,{' '}
-            <button 
-              onClick={() => setShowNameDialog(true)}
-              className={`hover:${colors.text.secondary} transition-colors duration-200`}
-            >
-              {name}! 🎸
-            </button>
-          </h1>
-          <p className={`text-lg md:text-xl ${colors.text.secondary} mb-6`}>
-            Ready to start your guitar journey?
-          </p>
+          {/* Welcoming header with animation */}
+          <div className={`opacity-0 ${mounted ? 'animate-fadeIn' : ''}`} style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 text-shadow-lg">
+              Welcome,{' '}
+              <button 
+                onClick={() => setShowNameDialog(true)}
+                className="hover:text-indigo-300 transition-colors duration-200"
+              >
+                {name}! 🎸
+              </button>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 text-shadow-md">
+              Ready to start your guitar journey?
+            </p>
+          </div>
           
-          {/* Main navigation cards - stack on mobile, grid on larger screens */}
-          <div className="flex flex-col gap-4 mt-8 md:grid md:grid-cols-2 lg:grid-cols-4">
-            {/* Each card is full-width on mobile, grid on larger screens */}
-            <button 
-              onClick={() => navigate('/basics')}
-              className={`bg-white p-6 rounded-xl shadow-lg active:shadow-md 
-                         transition-all duration-200 active:scale-98 
-                         hover:bg-${colors.primary}-50 focus:outline-none focus:ring-2 
-                         focus:ring-${colors.primary}-300 min-h-[120px]
-                         flex flex-col items-center justify-center`}
-            >
-              <h2 className={`text-xl font-semibold ${colors.text.primary} mb-2`}>Basics</h2>
-              <p className={colors.text.secondary}>Learn about your guitar and how to hold it</p>
-            </button>
-
-            <button 
-              onClick={() => navigate('/chords')}
-              className={`bg-white p-6 rounded-xl shadow-lg active:shadow-md 
-                         transition-all duration-200 active:scale-98 
-                         hover:bg-${colors.primary}-50 focus:outline-none focus:ring-2 
-                         focus:ring-${colors.primary}-300 min-h-[120px]
-                         flex flex-col items-center justify-center`}
-            >
-              <h2 className={`text-xl font-semibold ${colors.text.primary} mb-2`}>All Chords</h2>
-              <p className={colors.text.secondary}>Master guitar chords with interactive lessons</p>
-            </button>
-
-            <button 
-              className={`bg-white p-6 rounded-xl shadow-lg active:shadow-md 
-                         transition-all duration-200 active:scale-98 
-                         hover:bg-${colors.primary}-50 focus:outline-none focus:ring-2 
-                         focus:ring-${colors.primary}-300 min-h-[120px]
-                         flex flex-col items-center justify-center`}
-              onClick={() => navigate('/practice')}
-            >
-              <h2 className={`text-xl font-semibold ${colors.text.primary} mb-2`}>Practice</h2>
-              <p className={colors.text.secondary}>Track your progress and achievements</p>
-            </button>
-
-            <button 
-              className={`bg-white p-6 rounded-xl shadow-lg active:shadow-md 
-                         transition-all duration-200 active:scale-98 
-                         hover:bg-${colors.primary}-50 focus:outline-none focus:ring-2 
-                         focus:ring-${colors.primary}-300 min-h-[120px]
-                         flex flex-col items-center justify-center`}
-              onClick={() => navigate('/resources')}
-            >
-              <h2 className={`text-xl font-semibold ${colors.text.primary} mb-2`}>Resources</h2>
-              <p className={colors.text.secondary}>Helpful guides and tips</p>
-            </button>
+          {/* Main navigation cards with staggered animation */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            {[
+              {
+                title: 'Basics',
+                description: 'Learn about your guitar and how to hold it',
+                path: '/basics',
+                delay: 0.4
+              },
+              {
+                title: 'All Chords',
+                description: 'Master guitar chords with interactive lessons',
+                path: '/chords',
+                delay: 0.6
+              },
+              {
+                title: 'Practice',
+                description: 'Track your progress and achievements',
+                path: '/practice',
+                delay: 0.8
+              },
+              {
+                title: 'Resources',
+                description: 'Helpful guides and tips',
+                path: '/resources',
+                delay: 1.0
+              }
+            ].map((item) => (
+              <button 
+                key={item.title}
+                onClick={() => navigate(item.path)}
+                className={`opacity-0 card-hover bg-white/95 backdrop-blur-md p-8 rounded-xl 
+                          shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.25)]
+                          focus:outline-none focus:ring-2 focus:ring-indigo-300
+                          min-h-[180px] flex flex-col items-center justify-center
+                          ${mounted ? 'animate-scaleIn' : ''}`}
+                style={{ animationDelay: `${item.delay}s` }}
+              >
+                <h2 className="text-2xl font-semibold text-gray-800 mb-3">{item.title}</h2>
+                <p className="text-gray-600 text-lg">{item.description}</p>
+              </button>
+            ))}
           </div>
 
-          {/* Motivational quote - adjusted for mobile */}
-          <div className="mt-8 md:mt-12 px-4">
-            <p className={`text-base md:text-lg ${colors.text.secondary} italic`}>
+          {/* Motivational quote with animation */}
+          <div 
+            className={`mt-12 px-4 opacity-0 ${mounted ? 'animate-slideIn' : ''}`}
+            style={{ animationDelay: '1.2s' }}
+          >
+            <p className="text-xl md:text-2xl text-white italic text-shadow-md">
               "Every expert was once a beginner. Let's take this journey one step at a time{['rojina', 'malecka', 'roji', 'rojina tamang'].includes(name.toLowerCase()) ? ' 💜' : ''}!"
             </p>
           </div>

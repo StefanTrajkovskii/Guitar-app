@@ -1,0 +1,201 @@
+/* Guitar string animations */
+@keyframes stringVibrate0 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(4px) skew(-6deg); } 
+}
+@keyframes stringVibrate1 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(5px) skew(-6deg); } 
+}
+@keyframes stringVibrate2 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(6px) skew(-6deg); } 
+}
+@keyframes stringVibrate3 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(5px) skew(-6deg); } 
+}
+@keyframes stringVibrate4 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(4px) skew(-6deg); } 
+}
+@keyframes stringVibrate5 { 
+  0%, 100% { transform: translateY(0) skew(-6deg); } 
+  50% { transform: translateY(3px) skew(-6deg); } 
+}
+
+/* String vibration animations */
+@keyframes vibrate1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes vibrate2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes vibrate3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Floating animation for music notes */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(-10px, -15px) rotate(-5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(10px, -30px) rotate(5deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(-5px, -45px) rotate(-3deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0, -60px) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* String pulse animation */
+@keyframes stringPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleY(1.2);
+  }
+}
+
+/* Floating pick animation */
+@keyframes floatPick {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate(-20px, 100px) rotate(90deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(10px, 200px) rotate(180deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(-15px, 300px) rotate(270deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(0, 400px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Wave animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(50%) translateX(-5%) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(50%) translateX(5%) rotate(1deg);
+  }
+}
+
+/* Pulse animation for dots */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+/* Beam animation */
+@keyframes beam {
+  0%, 100% {
+    opacity: 0.02;
+    transform: rotate(45deg) translateX(-5%);
+  }
+  50% {
+    opacity: 0.04;
+    transform: rotate(45deg) translateX(5%);
+  }
+}
+
+/* Component animations */
+.animate-fadeIn {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover animation */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
