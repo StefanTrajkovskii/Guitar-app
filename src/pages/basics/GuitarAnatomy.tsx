@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import guitarDiagram from '../../assets/acoustic_guitar_anatomy.jpg';
+import guitarDiagram from '../../assets/images/acoustic_guitar_anatomy.jpg';
 import { useUser } from '../../contexts/UserContext';
 
 interface Props {

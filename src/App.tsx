@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
+import theme from './styles/theme/theme';
 import HomePage from './pages/HomePage';
 import BasicsPage from './pages/basics/BasicsPage';
 import AllChordsPage from './pages/chords/AllChordsPage';

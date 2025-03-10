@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog, TextField, Button } from '@mui/material';
 import { useUser } from '../contexts/UserContext';
-import '../styles/animations.css';
-import backgroundImage from '../assets/images/Background-guitar.jpg';
+import '../styles/animations/animations.css';
+import backgroundImage from '../assets/images/electric-guitar-notepad-music-speaker-table-room-top-view.jpg';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
