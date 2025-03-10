@@ -8,7 +8,7 @@ import backgroundImage from '../assets/images/electric-guitar-notepad-music-spea
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [showNameDialog, setShowNameDialog] = useState(false);
-  const { name, colors } = useUser();
+  const { name } = useUser();
   const [newName, setNewName] = useState(name);
   const [mounted, setMounted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
