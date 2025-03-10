@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
         }}
       >
         <div className="p-6">
-          <h2 className={`text-2xl font-bold ${colors.text.primary} mb-4`}>Change Your Name</h2>
+          <h2 className="text-2xl font-semibold mb-4">Change Your Name</h2>
           <TextField
             inputRef={inputRef}
             fullWidth
@@ -78,13 +78,14 @@ const HomePage: React.FC = () => {
             }}
             placeholder="Your name"
             className="mb-12"
+            variant="outlined"
           />
           <Button
             variant="contained"
             fullWidth
             onClick={handleNameSubmit}
             disabled={!newName.trim()}
-            className={`${colors.primary} hover:${colors.primary}-600 text-white py-3`}
+            className="py-3 text-lg"
           >
             SAVE NAME
           </Button>
@@ -95,7 +96,7 @@ const HomePage: React.FC = () => {
         <div className="text-center">
           {/* Welcoming header with animation */}
           <div className={`opacity-0 ${mounted ? 'animate-fadeIn' : ''}`} style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 text-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 text-shadow-lg tracking-tight">
               Welcome,{' '}
               <button 
                 onClick={() => setShowNameDialog(true)}
@@ -104,7 +105,7 @@ const HomePage: React.FC = () => {
                 {name}! 🎸
               </button>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-12 text-shadow-md">
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 text-shadow-md font-light">
               Ready to start your guitar journey?
             </p>
           </div>
@@ -147,8 +148,8 @@ const HomePage: React.FC = () => {
                           ${mounted ? 'animate-scaleIn' : ''}`}
                 style={{ animationDelay: `${item.delay}s` }}
               >
-                <h2 className="text-2xl font-semibold text-gray-800 mb-3">{item.title}</h2>
-                <p className="text-gray-600 text-lg">{item.description}</p>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-3 tracking-tight">{item.title}</h2>
+                <p className="text-gray-600 text-lg font-light leading-relaxed">{item.description}</p>
               </button>
             ))}
           </div>
@@ -158,7 +159,7 @@ const HomePage: React.FC = () => {
             className={`mt-12 px-4 opacity-0 ${mounted ? 'animate-slideIn' : ''}`}
             style={{ animationDelay: '1.2s' }}
           >
-            <p className="text-xl md:text-2xl text-white italic text-shadow-md">
+            <p className="text-xl md:text-2xl text-white italic text-shadow-md font-light tracking-wide">
               "Every expert was once a beginner. Let's take this journey one step at a time{['rojina', 'malecka', 'roji', 'rojina tamang'].includes(name.toLowerCase()) ? ' 💜' : ''}!"
             </p>
           </div>
