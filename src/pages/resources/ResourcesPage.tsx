@@ -16,8 +16,6 @@ import paulDavidsImg from '../../assets/youtubers/paul-davids.jpg';
 import UltimateGuitarLogo from '../../assets/logos/UltimateGuitarLogo';
 import guitarTunaLogo from '../../assets/logos/guitar-tuna.png';
 import songsterrLogo from '../../assets/logos/songsterr.png';
-import mimiMuzikaLogo from '../../assets/logos/mimi-muzika.jpg';
-import artistLogo from '../../assets/logos/artist.png';
 
 interface Resource {
   title: string;
@@ -38,7 +36,7 @@ const ResourcesPage: React.FC = () => {
     {
       title: "Marty Schwartz Guitar",
       description: "Comprehensive guitar lessons for all levels, known for clear explanations and step-by-step tutorials.",
-      link: "https://www.youtube.com/@martyschwartz",
+      link: "https://www.youtube.com/@MartyMusic",
       difficulty: "Beginner",
       type: "video",
       tags: ["lessons", "tutorials", "techniques"],
@@ -118,7 +116,6 @@ const ResourcesPage: React.FC = () => {
       difficulty: "Beginner",
       type: "gear",
       tags: ["shop", "local", "guitars", "equipment"],
-      logo: mimiMuzikaLogo
     },
     {
       title: "ARTIST-SISTEMS",
@@ -127,7 +124,6 @@ const ResourcesPage: React.FC = () => {
       difficulty: "Beginner",
       type: "gear",
       tags: ["shop", "local", "instruments", "equipment"],
-      logo: artistLogo
     }
   ];
 
